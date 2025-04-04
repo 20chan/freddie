@@ -1,9 +1,13 @@
+import 'dotenv/config';
+
 import { readFile, writeFile } from 'fs/promises';
 import fetch from 'node-fetch';
 import cron from 'node-cron';
 import { getFestivalInfo, getFestivalList } from './festival';
 
-const WEBHOOK_URL = 'https://discord.com/api/webhooks/1276819321913475114/WlOAFJuG0tcUts4XFyvLO-Grl693iAsL2YRlKatTOBW3lNpzdm_jjGl1kFs6QlaEPIFc';
+const WEBHOOK_URL = process.env.WEBHOOK_URL || '';
+
+console.log('WEBHOOK_URL', WEBHOOK_URL);
 
 interface WebhookInput {
   content: string;

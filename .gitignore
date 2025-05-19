@@ -46,3 +46,4 @@ yarn.lock
 .env**
 
 prisma/dev.db
+*.txt

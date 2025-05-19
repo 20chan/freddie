@@ -1,8 +1,16 @@
 import fetch from 'node-fetch';
 import { parse } from 'node-html-parser';
+import { Kind } from './kind';
 
-export async function getFestivalList() {
-  const resp = await fetch('https://festivallife.kr/concert_k');
+const urls: Record<Kind, string> = {
+  [Kind.K_Concert]: 'https://festivallife.kr/concert',
+  [Kind.K_Festival]: 'https://festivallife.kr/festival',
+  [Kind.F_Concert]: 'https://festivallife.kr/concert_k',
+  [Kind.F_Festival]: 'https://festivallife.kr/festival_o',
+}
+
+export async function getFestivalList(kind: Kind) {
+  const resp = await fetch(urls[kind]);
   const html = await resp.text();
 
   const root = parse(html);

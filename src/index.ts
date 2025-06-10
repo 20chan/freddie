@@ -59,7 +59,7 @@ async function main() {
 
     const lastIndex = list.findIndex(x => x.title === lastTitle);
     if (lastIndex === 0) {
-      return;
+      continue;
     }
 
     const start = lastIndex === -1 ? list.length : lastIndex;
